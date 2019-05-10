@@ -31,6 +31,10 @@ export default {
    */
   plugins: ['@/plugins/element-ui'],
 
+  router: {
+    middleware: ['auth-cookie']
+  },
+
   /*
    ** Nuxt.js modules
    */
@@ -67,11 +71,5 @@ export default {
     //     })
     //   }
     // }
-  }
-}
-
-{
-  router: {
-    middleware: ['auth-cookie']
-  }
+  },
 }
