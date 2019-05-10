@@ -18,7 +18,7 @@ import moment from '~/plugins/moment'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asynvData({ store }) {
+  async asyncData({ store }) {
     await store.dispatch('posts/fetchPosts')
   },
   computed: {

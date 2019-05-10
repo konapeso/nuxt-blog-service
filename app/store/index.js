@@ -7,7 +7,8 @@ export const state = () => ({
 
 export const getters = {
     isLoggedIn: state => state.isLoggedIn,
-    user: state => (state.user ? Object.assign({ likes: [] }, state.user) : null)
+    user: (state) =>
+        state.user ? Object.assign({ likes: [] }, state.user) : null
 }
 
 export const mutations = {
@@ -48,7 +49,7 @@ export const actions = {
             post_id: post.id
         })
         const newUser = await this.$axios.$put(`/users/${user.id}.json`, user)
-        commit('updateUser', { user: newUser })
+        commit('setUser', { user: newUser })
     },
     async removeLikeLogToUser({ commit }, { user, post }) {
         user.likes = post.likes.filter(like => like.user_id !== user.id) || []
