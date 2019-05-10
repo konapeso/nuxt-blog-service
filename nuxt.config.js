@@ -69,3 +69,9 @@ export default {
     // }
   }
 }
+
+{
+  router: {
+    middleware: ['auth-cookie']
+  }
+}
