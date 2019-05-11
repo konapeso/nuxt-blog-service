@@ -26,6 +26,7 @@ export const actions = {
         commit('addPost', { post: { ...post, id } })
     },
     async fetchPosts({ commit }) {
+        console.log('fetchPosts')
         const posts = await this.$axios.$get(`/posts.json`)
         commit('clearPosts')
         Object.entries(posts || [])

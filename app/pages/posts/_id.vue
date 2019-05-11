@@ -43,7 +43,12 @@ export default {
   },
   computed: {
     post() {
-      return this.posts.find(l => l.user_id === this.user.id)
+      return this.posts.find(p => p.id === this.$route.params.id)
+    },
+
+    isLiked() {
+      if (!this.uesr) return false
+      return this.post.likes.find(l => l.user_id === user.id)
     },
     ...mapGetters(['user', 'isLoggedIn']),
     ...mapGetters('posts', ['posts'])
@@ -54,7 +59,7 @@ export default {
         return
       }
       const likePayload = { user: this.user, post: this.post }
-      this.addLikeToPost(cloneDeep(likePaylosd))
+      this.addLikeToPost(cloneDeep(likePayload))
       this.addLikeLogToUser(cloneDeep(likePayload))
     },
     unlike() {
