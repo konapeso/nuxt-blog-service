@@ -30,7 +30,6 @@ export const actions = {
             throw new TypeError('invalid username')
         }
         const user = await this.$axios.$get(`/users/${id}.json`)
-        console.log(user)
         if (!user.id) throw new Error('Invalid user')
         commit('setUser', { user })
     },

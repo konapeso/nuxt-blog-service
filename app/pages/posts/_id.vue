@@ -66,10 +66,12 @@ export default {
       if (!this.isLoggedIn) {
         return
       }
+      const likePayload = { user: this.user, post: this.post }
+      this.removeLikeToPost(cloneDeep(likePayload))
+      this.removeLikeLogToUser(cloneDeep(likePayload))
     },
-
-    ...mapActions(['addLikeLogToUser']),
-    ...mapActions('posts', ['addLikeToPost'])
+    ...mapActions(['addLikeLogToUser', 'removeLikeLogToUser']),
+    ...mapActions('posts', ['addLikeToPost', 'removeLikeToPost'])
   },
   filters: {
     time(val) {
